@@ -97,7 +97,7 @@ button{font:inherit;color:inherit}
 .hero-txt{position:relative}
 .kicker{font-weight:600;color:var(--ink2);max-width:52ch;font-size:15px;margin-bottom:20px}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(44px,5.8vw,96px);line-height:.94;letter-spacing:-.035em}
-h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+h1 .ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.08em}
 h1 .ln>span{display:block;transform:translateY(105%);transition:transform 1.2s var(--ease)}
 .go h1 .ln>span{transform:none}
 .go h1 .ln:nth-child(2)>span{transition-delay:.12s}
@@ -349,6 +349,77 @@ footer{background:var(--ink);color:#c8d3db;margin-top:120px;padding:80px 0 calc(
   footer{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
 }
 
+/* ---- mobile : carrousels + blocs repliés ---- */
+.dots{display:none}
+.rev-wrap>*,.radar-wrap>*,.pdv-grid>*{min-width:0}
+.more-btn{display:none}
+@media (max-width:767px){
+  .car{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px!important;margin-left:-18px!important;margin-right:-18px!important;padding:4px 18px 8px!important;scroll-padding:0 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .car::-webkit-scrollbar{display:none}
+  .car>*{flex:0 0 84%;scroll-snap-align:start;margin:0!important;transform:none}
+  .car>.rv{opacity:1;transform:none}
+  .svc-grid.car>.sv{min-height:300px}
+  .chk.car{border-top:0}
+  .chk.car li{flex:0 0 70%;flex-direction:column;gap:14px;border:1px solid var(--line)!important;border-radius:var(--r);background:var(--card);padding:22px!important;font-size:17px}
+  .news.car .post{flex-basis:80%;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--ink);border-radius:var(--r);padding:20px}
+  .exp.car{display:grid!important;grid-auto-flow:column;grid-template-rows:repeat(3,auto);grid-auto-columns:max-content}
+  .exp.car>*{flex:none}
+  .dots{display:flex;justify-content:center;gap:7px;margin-top:14px}
+  .dots i{width:7px;height:7px;border-radius:9px;background:var(--line2);transition:all .35s var(--ease)}
+  .dots i.on{width:22px;background:var(--ink)}
+  .pdv .dots i.on{background:#fff}
+  .clamp{max-height:var(--cl,340px);overflow:hidden;position:relative;transition:max-height .7s var(--ease)}
+  .clamp.sm{--cl:150px}
+  .clamp::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(transparent,var(--paper));pointer-events:none;transition:opacity .4s}
+  .clamp.open{max-height:none}.clamp.open::after{opacity:0}
+  .more-btn{display:inline-flex;min-height:44px;align-items:center;gap:8px;margin-top:8px;font-weight:700;border:0;background:none;cursor:pointer;color:var(--signal-ink);padding:0}
+  /* nav & hero */
+  .logo span{font-size:12.5px}
+  .logo-mk{width:32px;height:32px}
+  .nav .wrap{gap:10px}
+  .nav-r .btn{padding:0 16px;min-height:42px;font-size:14.5px}
+  .proof div{font-size:17px}
+  .proof small{font-size:11.5px}
+  /* mission compacte */
+  .mission{height:300vh}
+  .m-stick .tag{display:none}
+  .m-stick{padding:76px 18px 92px;gap:14px}
+  .m-view{aspect-ratio:1.55}
+  .m-steps{min-height:0;display:grid}
+  .m-step{grid-area:1/1;position:relative;inset:auto}
+  .m-step h3{font-size:25px}
+  .m-step p{font-size:15px;line-height:1.5}
+  .m-prog{margin-top:14px}
+  .sec{padding:70px 0}
+  .mani{padding:70px 0}
+  .mani p{font-size:28px}
+  footer{margin-top:70px}
+  .f-top{font-size:44px}
+}
+@media (max-width:370px){.logo span{font-size:11.5px}.nav-r .btn{padding:0 13px}}
+
+@media (max-width:767px){
+  .mission{height:260vh}
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -18px;padding:0 18px 4px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none}
+  .cfg{gap:18px}.q{padding-top:16px}
+  .fields{grid-template-columns:1fr 1fr!important;gap:10px}
+  .f.full{grid-column:1/-1}
+  .f textarea{min-height:70px}
+  .pdv-grid{gap:26px;margin-top:30px}
+  .pass-body{padding:18px;gap:14px}
+  .barcode{display:none}
+  .steps3{gap:6px 14px;font-size:13px}
+  .pdv .lead{font-size:16px}
+  .f-grid{grid-template-columns:1fr 1fr;gap:22px}
+  .f-grid>div:nth-child(2){display:none}
+  .f-grid>div:first-child{grid-column:1/-1}
+  .rev q{font-size:19px}
+  .score .big{font-size:96px}
+}
+@media (max-width:370px){.fields{grid-template-columns:1fr!important}}
+
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .rv,.hero-side{opacity:1!important;transform:none!important}
@@ -521,7 +592,7 @@ footer{background:var(--ink);color:#c8d3db;margin-top:120px;padding:80px 0 calc(
   <div class="wrap">
     <span class="tag rv">Prestations</span>
     <h2 class="h2 rv" style="margin-top:14px">Tout nettoyage difficile d'accès en extérieur, <em>par drone.</em></h2>
-    <div class="svc-grid">
+    <div class="svc-grid car">
       <a class="sv big rv" href="https://www.dronenormandiepro.com/blog">
         <span class="si"><svg class="ico" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></span>
         <h3>Toiture/<wbr>Façade/<wbr>Bardage/<wbr>Terrasse/<wbr>Vitre</h3>
@@ -640,7 +711,7 @@ footer{background:var(--ink);color:#c8d3db;margin-top:120px;padding:80px 0 calc(
 <section class="sec">
   <div class="wrap">
     <h2 class="h2 rv">Pourquoi choisir <em>Drone Normandie Pro</em> ?</h2>
-    <ul class="chk" id="chk">
+    <ul class="chk car" id="chk">
       <li><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Télépilote professionnel déclaré et assuré</li>
       <li><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Autorisations de vol dans les zones réglementées</li>
       <li><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Matériel 4K / 5K dernière génération</li>
@@ -661,7 +732,7 @@ footer{background:var(--ink);color:#c8d3db;margin-top:120px;padding:80px 0 calc(
       <a class="btn btn-line" style="margin-top:22px" href="https://share.google/qqEle77QrhHuLWoyb">Voir les avis Google</a>
     </div>
     <div>
-      <div class="revs">
+      <div class="revs car">
         <figure class="rev rv"><q>Excellente expérience avec Drone Normandie pro, je recommande vivement !</q><small>Avis client Google, 5 étoiles</small></figure>
         <figure class="rev rv"><q>Très bon professionnel et à l'écoute des demandes ! Je recommande !</q><small>Avis client Google, 5 étoiles</small></figure>
         <figure class="rev rv"><q>A l'écouter et professionnel . Beau travail !!!</q><small>Avis client Google, 5 étoiles</small></figure>
@@ -681,7 +752,7 @@ footer{background:var(--ink);color:#c8d3db;margin-top:120px;padding:80px 0 calc(
     <div class="radar-wrap">
       <div class="radar rv" id="radar"><canvas id="rd"></canvas><div class="rd-tip" id="rdTip"></div><div class="rd-legend">Touchez une ville pour préparer votre devis</div></div>
       <div class="rv">
-        <p class="lead" style="margin-top:0">Nous intervenons partout en Normandie, notamment : Caen, Bayeux, Ouistreham, Courseulles-sur-Mer, Arromanches, Colleville-sur-Mer, Omaha Beach, Isigny-sur-Mer, Port-en-Bessin, Saint-Lô, Cherbourg, Coutances, Granville, Avranches, Mont-Saint-Michel, Villedieu-les-Poêles, Carentan, Flers, Falaise, Lisieux, Deauville, Trouville, Honfleur, Pont-l’Évêque, Cabourg, Houlgate, Argentan, Alençon, Évreux, Vernon, Louviers, Le Havre, Rouen, Dieppe, Fécamp, et dans toutes les communes environnantes.</p>
+        <p class="lead clamp sm" style="margin-top:0">Nous intervenons partout en Normandie, notamment : Caen, Bayeux, Ouistreham, Courseulles-sur-Mer, Arromanches, Colleville-sur-Mer, Omaha Beach, Isigny-sur-Mer, Port-en-Bessin, Saint-Lô, Cherbourg, Coutances, Granville, Avranches, Mont-Saint-Michel, Villedieu-les-Poêles, Carentan, Flers, Falaise, Lisieux, Deauville, Trouville, Honfleur, Pont-l’Évêque, Cabourg, Houlgate, Argentan, Alençon, Évreux, Vernon, Louviers, Le Havre, Rouen, Dieppe, Fécamp, et dans toutes les communes environnantes.</p>
         <div class="dpts" id="dpts" role="group" aria-label="Départements"></div>
         <div class="towns" id="towns"></div>
       </div>
@@ -707,7 +778,7 @@ footer{background:var(--ink);color:#c8d3db;margin-top:120px;padding:80px 0 calc(
         <a class="btn btn-go" style="margin-top:18px" href="#devis" data-surf="Initiation pilotage">Demander une session</a>
       </div>
     </div>
-    <div class="about-body">
+    <div class="about-body clamp" id="aboutBody">
       <p class="eng">Notre Engagement</p>
       <p>Drone Normandie Pro – joignable au <a href="tel:0680944161">06 80 94 41 61</a> – est une entreprise spécialisée dans le nettoyage, l’inspection et la prise de vue aérienne , photo vidéo , montage, par drone en Normandie, Bretagne et régions voisines.</p>
       <p>Nous intervenons pour le nettoyage de toitures, bardages, façades et entrepôts industriels, le démoussage de toiture, le nettoyage de surfaces amiantées, la thermographie aérienne et la destruction de nids de frelons par drone.</p>
@@ -741,7 +812,7 @@ footer{background:var(--ink);color:#c8d3db;margin-top:120px;padding:80px 0 calc(
       <p>Drone Normandie Pro met son expertise au service de vos projets : immobilier, tourisme, patrimoine, industrie, travaux publics, communication, inspection, surveillance, événementiel, et bien plus encore.</p>
     </div>
   </div>
-  <div class="wrap"><div class="exp" aria-label="Expertises">
+  <div class="wrap"><div class="exp car" aria-label="Expertises">
       <p>Photo par drone en Normandie</p>
       <p>Vidéo par drone Calvados / Manche / Orne / Seine-Maritime / Eure</p>
       <p>Prise de vue aérienne professionnelle</p>
@@ -764,7 +835,7 @@ footer{background:var(--ink);color:#c8d3db;margin-top:120px;padding:80px 0 calc(
 <section class="sec" id="actualites" style="padding-top:40px">
   <div class="wrap">
     <h2 class="h2 rv">Actualités</h2>
-    <div class="news">
+    <div class="news car">
       <a class="post rv" href="https://www.dronenormandiepro.com/post/combien-coûte-un-démoussage-de-toiture-calvados-caen-normandie"><span class="pt">Article épinglé</span><h3>Prix d'un démoussage de toiture au m² en 2026- Calvados Caen Normandie</h3><span class="more">Lire l'article →</span></a>
       <a class="post rv" href="https://www.dronenormandiepro.com/post/entreprise-de-nettoyage-dans-le-calvados"><span class="pt">Article épinglé</span><h3>Entreprise de nettoyage dans le calvados</h3><p>Notre entreprise de nettoyage dans le Calvados est spécialisée dans l’entretien et la remise en état des bâtiments professionnels, industriels et commerciaux , pour les pro et les particuliers.</p><span class="more">Lire l'article →</span></a>
       <a class="post rv" href="https://www.dronenormandiepro.com/post/entreprise-de-nettoyage-extérieur-dans-le-calvados"><span class="pt">Article épinglé</span><h3>Entreprise de Nettoyage extérieur Caen Calvados- Intervention dans toute la Normandie</h3><span class="more">Lire l'article →</span></a>
@@ -943,6 +1014,15 @@ $('#cfg').addEventListener('submit',e=>{e.preventDefault();let ok=true;
   location.href='mailto:Dronenormandiepro@gmail.com?subject='+encodeURIComponent('Je demande un devis gratuit sans engagement')+'&body='+encodeURIComponent(body);
   $('#sent').classList.add('on');
 });
+
+
+/* ---------- carrousels mobiles + blocs repliés ---------- */
+$$('.car').forEach(c=>{const kids=[...c.children];const d=document.createElement('div');d.className='dots';d.setAttribute('aria-hidden','true');
+  d.innerHTML=kids.map(()=>'<i></i>').join('');c.after(d);const dots=[...d.children];
+  const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=kids.indexOf(e.target);dots.forEach((x,j)=>x.classList.toggle('on',j===i));}}),{root:c,threshold:.6});
+  kids.forEach(k=>ob.observe(k));dots[0]&&dots[0].classList.add('on');});
+$$('.clamp').forEach(el=>{const b=document.createElement('button');b.type='button';b.className='more-btn';b.textContent=el.id==='aboutBody'?'Lire la présentation complète +':'Voir toutes les villes +';
+  b.onclick=()=>{const o=el.classList.toggle('open');b.textContent=o?'Réduire −':(el.id==='aboutBody'?'Lire la présentation complète +':'Voir toutes les villes +');if(!o)el.scrollIntoView({block:'nearest'});};el.after(b);});
 
 /* ---------- manifesto ---------- */
 const man=$('#mani'); man.innerHTML=man.textContent.split(' ').map(w=>`<span class="w${/politique|chaque/.test(w)?' k':''}">${w}</span>`).join(' ');
